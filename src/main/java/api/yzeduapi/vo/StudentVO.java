@@ -23,6 +23,7 @@ public class StudentVO {
 
     private int isenabled;
 
+
     private String jwt;
 
 }

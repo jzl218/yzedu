@@ -19,6 +19,11 @@ public enum AuthApis {
 	POST_PRACTICE(7,"/api/course/practicesubmit"),
 	GET_SUBMITTED_PRACTICE(8,"/api/course/getsubmitedpractice"),
 
+
+	SEND_EMAIL_CODE(9,"/api/message/emailcode"),
+	UPDATE_PASS(10,"/api/message/updatepass"),
+	SET_EAMIL(11,"api/message/setemail"),
+
 	;
 
 	/** ?~? 表示教师角色权限*/

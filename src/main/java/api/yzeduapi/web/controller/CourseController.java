@@ -7,6 +7,7 @@ import api.yzeduapi.exception.UserErrorException;
 import api.yzeduapi.repository.PracticeRepository;
 import api.yzeduapi.repository.PracticeSubmitRepository;
 import api.yzeduapi.repository.StudentChapterRepository;
+import api.yzeduapi.repository.WrongQustionRepository;
 import api.yzeduapi.sevice.ChapterService;
 import api.yzeduapi.sevice.CourseService;
 import api.yzeduapi.sevice.StudentCourseService;
@@ -44,6 +45,8 @@ public class CourseController {
     private PracticeRepository practiceRepository;
     @Autowired
     private PracticeSubmitRepository practiceSubmitRepository;
+    @Autowired
+    private WrongQustionRepository wrongQustionRepository;
 
     @GetMapping("/getstudentcourse")
     public Result getstudentCourse() {
@@ -163,6 +166,24 @@ public class CourseController {
         if (practiceSubmitRepository.save(practice)==null)
             throw new UserErrorException(ErrorCode.PRACTICE_SUBMIT_ERROR);
         return ResultUtil.Success();
+    }
+
+    @GetMapping("/getwrongquestions")
+    public Result getWrongQuestions(int practice){
+        int student=accountProvider.getNowUser().getId();
+        if (wrongQustionRepository
+                .findByPracticeAndStudent(practice,student)==null)
+            throw new UserErrorException(ErrorCode.WRONGQUESTION_NOT_FOUND);
+        List<Wrongquestion> wrongquestions=wrongQustionRepository
+                .findByPracticeAndStudent(practice,student);
+        List<WrongQuesionVO> wrongQuesionVOS=wrongquestions
+                .stream()
+                .map(wrongquestion -> {
+                    WrongQuesionVO wrongQuesionVO=new WrongQuesionVO();
+                    BeanUtils.copyProperties(wrongquestion,wrongQuesionVO);
+                    return wrongQuesionVO;
+                }).collect(Collectors.toList());
+        return ResultUtil.Success(wrongQuesionVOS);
     }
 
 

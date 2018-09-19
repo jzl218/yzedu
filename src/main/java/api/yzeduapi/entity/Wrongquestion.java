@@ -6,19 +6,17 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "tasksubmit")
-public class TaskSubmit {
+public class Wrongquestion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
-    private Integer task;
+    private int student;
 
     @Column
-    private Integer student;
+    private int practice;
 
     @Column
-    private String text;
-
+    private int wrongindex;
 }
