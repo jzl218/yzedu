@@ -6,33 +6,23 @@ import javax.persistence.*;
 
 @Entity
 @Data
-public class Task {
+public class Topicreply {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
-    private String title;
+    private int student;
 
     @Column
-    private String text;
+    private int topic;
 
     @Column
-    private int teacher;
+    private String content;
 
     @Column
     private long createtime;
 
     @Column
-    private long deadline;
-
-    @Column
-    private String type;
-
-    @Column
-    private String enclosureurl;
-
-    @Column
-    private String classes;
-
+    private String imgurl;
 }

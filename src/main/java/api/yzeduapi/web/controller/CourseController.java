@@ -158,6 +158,8 @@ public class CourseController {
     @PostMapping("/practicesubmit")
     public Result practiceSubmit(@RequestBody PracticeSubmitDto practiceSubmitDto){
         int student =accountProvider.getNowUser().getId();
+        if (practiceSubmitRepository.findPracticesubmitByStudentAndPractice(student,practiceSubmitDto.getPractice())!=null)
+            throw new UserErrorException(ErrorCode.PRACTICE_HAS_SUBMITTED);
         Practicesubmit practice=new Practicesubmit();
         BeanUtils.copyProperties(practiceSubmitDto,practice);
         practice.setStudent(student);
@@ -185,6 +187,8 @@ public class CourseController {
                 }).collect(Collectors.toList());
         return ResultUtil.Success(wrongQuesionVOS);
     }
+
+
 
 
 

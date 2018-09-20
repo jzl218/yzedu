@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TaskSubmitRepository extends JpaRepository<TaskSubmit,Integer> {
+    TaskSubmit findTaskSubmitByTaskAndStudent(int task,int student);
 
 }

@@ -20,9 +20,9 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/message")
+@RequestMapping("/info")
 @Slf4j
-public class MessageController {
+public class InfoController {
     @Autowired
     private StudentService studentService;
     @Autowired

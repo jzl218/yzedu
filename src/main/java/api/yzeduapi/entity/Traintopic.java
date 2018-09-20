@@ -6,33 +6,28 @@ import javax.persistence.*;
 
 @Entity
 @Data
-public class Task {
+
+public class Traintopic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
-    private String title;
-
-    @Column
-    private String text;
-
-    @Column
-    private int teacher;
+    private int train;
 
     @Column
     private long createtime;
 
     @Column
-    private long deadline;
+    private int teacher;
 
     @Column
-    private String type;
+    private String title;
 
     @Column
-    private String enclosureurl;
+    private String content;
 
     @Column
-    private String classes;
+    private int isclosed;
 
 }

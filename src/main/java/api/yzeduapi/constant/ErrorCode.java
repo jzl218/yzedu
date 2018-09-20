@@ -1,5 +1,6 @@
 package api.yzeduapi.constant;
 
+import api.yzeduapi.entity.Practice;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
@@ -24,6 +25,11 @@ public enum ErrorCode {
 	EAMIL_HAS_BOUNDED(1012,"邮箱已绑定"),
 	EMAIL_NOT_BOUNDED(1013,"还未绑定邮箱"),
 	EMAIL_SET_ERROR(1014,"邮箱设置失败"),
+	TRAIN_NOT_FOUND(1015,"找不到实训"),
+	REPLY_FAILED(1016,"回复失败"),
+	TASK_SUBMIT_FAILED(1017,"任务提交失败"),
+	PRACTICE_HAS_SUBMITTED(1018,"练习已提交"),
+	TASK_HAS_SUBMITTED(1019,"任务已提交")
 	;
 
 	private Integer code;
