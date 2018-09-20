@@ -24,7 +24,7 @@ public class Studentcourse implements Serializable {
     private int tecscore;
 
     @Column
-    private int process;
+    private int process=0;
 
     @Column
     private int isclosed;

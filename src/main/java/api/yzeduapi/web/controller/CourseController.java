@@ -4,15 +4,13 @@ import api.yzeduapi.Dto.PracticeSubmitDto;
 import api.yzeduapi.constant.ErrorCode;
 import api.yzeduapi.entity.*;
 import api.yzeduapi.exception.UserErrorException;
-import api.yzeduapi.repository.PracticeRepository;
-import api.yzeduapi.repository.PracticeSubmitRepository;
-import api.yzeduapi.repository.StudentChapterRepository;
-import api.yzeduapi.repository.WrongQustionRepository;
+import api.yzeduapi.repository.*;
 import api.yzeduapi.sevice.ChapterService;
 import api.yzeduapi.sevice.CourseService;
 import api.yzeduapi.sevice.StudentCourseService;
 import api.yzeduapi.sevice.impl.AccountProviderImpl;
 import api.yzeduapi.utils.BeanUtils;
+import api.yzeduapi.utils.PicUtil;
 import api.yzeduapi.utils.ResultUtil;
 import api.yzeduapi.vo.*;
 import org.apache.commons.io.FileUtils;
@@ -47,6 +45,15 @@ public class CourseController {
     private PracticeSubmitRepository practiceSubmitRepository;
     @Autowired
     private WrongQustionRepository wrongQustionRepository;
+    @Autowired
+    private CourseRepository courseRepository;
+    @Autowired
+    private SchoolRepository schoolRepository;
+    @Autowired
+    private TeacherRepository teacherRepository;
+    @Autowired
+    private StudentCourseRepository studentCourseRepository;
+
 
     @GetMapping("/getstudentcourse")
     public Result getstudentCourse() {
@@ -186,6 +193,45 @@ public class CourseController {
                     return wrongQuesionVO;
                 }).collect(Collectors.toList());
         return ResultUtil.Success(wrongQuesionVOS);
+    }
+
+
+    @GetMapping("/getchosecourse")
+    public Result getChoseCourse(){
+        List<Course> courses=courseRepository.findAll();
+        List<ChoseCourseVO> choseCourseVOS=courses.stream()
+                .map(course -> {
+                    ChoseCourseVO choseCourseVO=new ChoseCourseVO();
+                    BeanUtils.copyProperties(course,choseCourseVO);
+                    try {
+                        choseCourseVO.setImg(PicUtil.baseurl(course.getImgurl()));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    choseCourseVO.setSchoolname(schoolRepository.findById(course.getId()).get().getName());
+                    choseCourseVO.setTeachername(teacherRepository.findTeacherById(course.getTeacher()).getName());
+                    return choseCourseVO;
+                }).collect(Collectors.toList());
+        return ResultUtil.Success(choseCourseVOS);
+
+    }
+
+    @GetMapping("/chosecourse")
+    public Result choeseCourse(int course){
+        Student student=accountProvider.getNowUser();
+        if (courseService.findById(course)==null)
+            throw new UserErrorException(ErrorCode.COURSE_NOT_FOUND);
+        Studentcourse studentcourse=new Studentcourse();
+        studentcourse.setCourse(course);
+        studentcourse.setStudent(student.getId());
+        studentcourse.setIsclosed(1);
+        if (studentCourseRepository.findStudentcourseByStudentAndCourse(student.getId(),course)!=null)
+            throw new UserErrorException(ErrorCode.COURSE_HAS_CHOSED);
+        if (studentCourseRepository.save(studentcourse)==null){
+            throw new UserErrorException(ErrorCode.COURSE_CHOSED_FALIED);
+        }
+
+        return ResultUtil.Success();
     }
 
 

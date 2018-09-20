@@ -29,7 +29,10 @@ public enum ErrorCode {
 	REPLY_FAILED(1016,"回复失败"),
 	TASK_SUBMIT_FAILED(1017,"任务提交失败"),
 	PRACTICE_HAS_SUBMITTED(1018,"练习已提交"),
-	TASK_HAS_SUBMITTED(1019,"任务已提交")
+	TASK_HAS_SUBMITTED(1019,"任务已提交"),
+    COURSE_HAS_CHOSED(1020,"您已经选过此课程"),
+    COURSE_CHOSED_FALIED(1021,"选课失败"),
+
 	;
 
 	private Integer code;
