@@ -208,7 +208,7 @@ public class CourseController {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    choseCourseVO.setSchoolname(schoolRepository.findById(course.getId()).get().getName());
+                    choseCourseVO.setSchoolname(schoolRepository.findSchoolById(course.getId()).getName());
                     choseCourseVO.setTeachername(teacherRepository.findTeacherById(course.getTeacher()).getName());
                     return choseCourseVO;
                 }).collect(Collectors.toList());

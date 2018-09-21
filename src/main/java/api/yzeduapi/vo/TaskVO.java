@@ -10,7 +10,7 @@ public class TaskVO {
     private String title;
 
 
-    private String text;
+    private String content;
 
 
     private String teachername;

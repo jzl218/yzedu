@@ -22,7 +22,7 @@ public enum AuthApis {
 	GET_SUBMITTED_PRACTICE(8,"/api/course/getsubmitedpractice"),
 	GET_WRONG_QUESTIONS(9,"/api/course/getwrongquestions"),
 	GET_CHOESCOURSE(10,"/api/course/getchosecourse"),
-	CHOSE_COURSE(11,"api/course/chosecourse"),
+	CHOSE_COURSE(11,"/api/course/chosecourse"),
 
 
 	SEND_EMAIL_CODE(12,"/api/info/emailcode"),
@@ -31,7 +31,7 @@ public enum AuthApis {
 
 
 	GET_NEWS(15,"/api/news/getnews"),
-
+		READ_NEWS(17,"/api/news/readnews"),
 
 	GET_TASK(16,"/api/task/gettask"),
 	GET_ENCLOSURE(17,"/api/task/getenclosure"),
@@ -39,7 +39,8 @@ public enum AuthApis {
 
 	GET_TRAIN(19,"/api/train/gettrain"),
 	GET_TRAIN_TOPIC(20,"/api/train/gettraintopic"),
-	GET_TOPIC_REPLY(21,"/api/train/gettopicreply")
+	GET_TOPIC_REPLY(21,"/api/train/gettopicreply"),
+	SEND_REPLY(22,"/api/train/sendreply")
 
 
 	;

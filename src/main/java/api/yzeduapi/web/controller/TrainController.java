@@ -56,7 +56,7 @@ public class TrainController {
                 .findTraintopicsByTrain(train);
         List<TrainTopicVO> trainTopicVOS=traintopics.stream()
                 .filter(traintopic -> {
-                    return traintopic.getIsclosed()!=0;
+                    return traintopic.getIsclosed()==0;
                 }).map(traintopic -> {
             TrainTopicVO trainTopicVO=new TrainTopicVO();
             BeanUtils.copyProperties(traintopic,trainTopicVO);

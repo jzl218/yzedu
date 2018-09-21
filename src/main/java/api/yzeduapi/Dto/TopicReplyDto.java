@@ -4,7 +4,7 @@ import lombok.Data;
 
 
 @Data
-public class TopicReplyDto {
+public class    TopicReplyDto {
 
     private int topic;
 

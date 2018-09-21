@@ -23,7 +23,10 @@ import org.jsets.shiro.config.FilterChainConfig;
 import org.jsets.shiro.config.JsetsShiroConfigurationAdapter;
 import org.jsets.shiro.config.SecurityManagerConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * 系统安全配置
@@ -33,6 +36,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2016年8月05日 
  *
  */
+
 @Configuration
 public class ApplicationSecurityConfig extends JsetsShiroConfigurationAdapter{
 

@@ -15,7 +15,7 @@ public class Task {
     private String title;
 
     @Column
-    private String text;
+    private String content;
 
     @Column
     private int teacher;

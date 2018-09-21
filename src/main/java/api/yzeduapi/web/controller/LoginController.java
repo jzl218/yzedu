@@ -28,7 +28,7 @@ public class LoginController {
         if (result.hasErrors()){
             throw new UserErrorException(result.getFieldError().getDefaultMessage());
         }
-        if (studentService.findByStunum(studentDto.getStunum()).getIsenabled()==0){
+        if (studentService.findByStunum(studentDto.getStunum()).getIsenabled()!=0){
             throw new UserNotFoundException(ErrorCode.ACCOUNT_DENIED);
         }
         if (studentService.findByStunumAndPass(studentDto.getStunum(),studentDto.getLoginpass())==null){

@@ -47,7 +47,7 @@ public class TaskController {
     public Result getTask(){
         Student student=accountProvider.getNowUser();
         String clazz=clazzRepository.findClazzById(student.getClazz()).getName();
-        List<Task> tasks=taskRepository.findTasksByClass(clazz);
+        List<Task> tasks=taskRepository.findTasksByClassesLike(clazz);
         List<TaskVO> taskVOS=tasks.stream()
                 .map(task -> {
                     TaskVO taskVO=new TaskVO();

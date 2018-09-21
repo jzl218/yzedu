@@ -19,6 +19,6 @@ public class TaskSubmit {
     private Integer student;
 
     @Column
-    private String text;
+    private String content;
 
 }

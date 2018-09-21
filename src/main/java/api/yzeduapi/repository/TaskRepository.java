@@ -9,7 +9,6 @@ import java.util.List;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task,Integer> {
-    @Query(value = "select * from task where classes like %?1%",nativeQuery = true)
-    List<Task> findTasksByClass(String clazz);
+    List<Task> findTasksByClassesLike(String clazz);
 
 }

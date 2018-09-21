@@ -48,4 +48,14 @@ public class NewsController {
         return ResultUtil.Success(newsVOS);
 
     }
+
+    @GetMapping ("/readnews")
+    public Result readNews(int news){
+        //TODO
+        Student student=accountProvider.getNowUser();
+        Readnews readnews=readNewsRepository.findBystudentAndNews(student.getId(),news);
+        readnews.setIsread(0);
+        readNewsRepository.save(readnews);
+        return ResultUtil.Success();
+    }
 }
