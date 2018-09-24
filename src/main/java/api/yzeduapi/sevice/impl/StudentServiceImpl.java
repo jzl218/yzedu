@@ -3,8 +3,8 @@ package api.yzeduapi.sevice.impl;
 import api.yzeduapi.entity.Student;
 import api.yzeduapi.repository.StudentRepository;
 import api.yzeduapi.sevice.StudentService;
-import api.yzeduapi.utils.CommonUtil;
-import api.yzeduapi.utils.JsonUtils;
+
+
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.jsets.shiro.util.CryptoUtil;
 import org.jsets.shiro.util.ShiroUtils;
@@ -13,7 +13,6 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Random;
 
 

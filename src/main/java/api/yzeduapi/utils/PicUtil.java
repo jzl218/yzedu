@@ -11,6 +11,9 @@ public class PicUtil {
     public static String baseurl(String path) throws IOException {
         if (path==null||path.equals(""))
             return "";
+        File file=new File(path);
+        if (!file.exists())
+            return "";
         byte[] data = null;
         FileInputStream fileInputStream = FileUtils.openInputStream(new File(path));
         data=new byte[fileInputStream.available()];

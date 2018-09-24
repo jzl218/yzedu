@@ -15,7 +15,7 @@
  * limitations under the License.
  * </p>
  */
-package api.yzeduapi;
+package api.yzeduapi.sevice.impl;
 
 import api.yzeduapi.sevice.impl.AccountProviderImpl;
 import api.yzeduapi.sevice.impl.FilteRulesProviderImpl;

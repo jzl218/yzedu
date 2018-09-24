@@ -76,20 +76,29 @@
 			<version>1.0.2</version>
 		</dependency>
 		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt</artifactId>
-			<version>0.9.0</version>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>1.2.15</version>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>20.0</version>
 		</dependency>
 		<dependency>
 			<groupId>net.sf.json-lib</groupId>
 			<artifactId>json-lib</artifactId>
 			<version>2.4</version>
 			<classifier>jdk15</classifier>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -103,6 +112,8 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+
+
 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

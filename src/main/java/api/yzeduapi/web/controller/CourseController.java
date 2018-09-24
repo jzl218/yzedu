@@ -61,7 +61,7 @@ public class CourseController {
         List<Studentcourse> studentcourses=studentCourseService.findcourseByStudent(student.getId());
         if (studentcourses!= null) {
             List<StudentCourseVO> studentCourseVOS=studentcourses.stream()
-                    .filter(studentcourse -> {return courseService.findById(studentcourse.getCourse()).getIsenabled()!=0;})
+                    .filter(studentcourse -> {return courseService.findById(studentcourse.getCourse()).getIsenabled()==0;})
                     .map(studentcourse -> {
                         Course course=courseService.findById(studentcourse.getCourse());
                         List<Chapter> chapters=chapterService.findByCourse(course.getId());
@@ -81,7 +81,7 @@ public class CourseController {
     @GetMapping("/getcourse")
     public Result getCourse(int course) throws IOException {
         if (courseService.findById(course)==null
-                ||courseService.findById(course).getIsenabled()==0)
+                ||courseService.findById(course).getIsenabled()!=0)
         throw new UserErrorException(ErrorCode.COURSE_NOT_FOUND);
         CourseVO courseVO=courseService.GetCourseDetail(course);
         return ResultUtil.Success(courseVO);
