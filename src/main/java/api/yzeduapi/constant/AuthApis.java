@@ -23,6 +23,7 @@ public enum AuthApis {
 	GET_WRONG_QUESTIONS(9,"/api/course/getwrongquestions"),
 	GET_CHOESCOURSE(10,"/api/course/getchosecourse"),
 	CHOSE_COURSE(11,"/api/course/chosecourse"),
+	CHOSE_COURSE_BY_TYPE(23,"/api/course/chosecoursebytype"),
 
 
 	SEND_EMAIL_CODE(12,"/api/info/emailcode"),

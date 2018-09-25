@@ -216,6 +216,26 @@ public class CourseController {
 
     }
 
+    @GetMapping("/getchosecoursebytype")
+    public Result getChoseCourseByType(String type){
+        List<Course> courses=courseRepository.findCoursesByTypeLike(type);
+        List<ChoseCourseVO> choseCourseVOS=courses.stream()
+                .map(course -> {
+                    ChoseCourseVO choseCourseVO=new ChoseCourseVO();
+                    BeanUtils.copyProperties(course,choseCourseVO);
+                    try {
+                        choseCourseVO.setImg(PicUtil.baseurl(course.getImgurl()));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    choseCourseVO.setSchoolname(schoolRepository.findSchoolById(course.getId()).getName());
+                    choseCourseVO.setTeachername(teacherRepository.findTeacherById(course.getTeacher()).getName());
+                    return choseCourseVO;
+                }).collect(Collectors.toList());
+        return ResultUtil.Success(choseCourseVOS);
+
+    }
+
     @GetMapping("/chosecourse")
     public Result choeseCourse(int course){
         Student student=accountProvider.getNowUser();
