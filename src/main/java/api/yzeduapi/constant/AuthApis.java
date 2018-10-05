@@ -24,7 +24,7 @@ public enum AuthApis {
 	GET_CHOESCOURSE(10,"/api/course/getchosecourse"),
 	CHOSE_COURSE(11,"/api/course/chosecourse"),
 	CHOSE_COURSE_BY_TYPE(23,"/api/course/chosecoursebytype"),
-
+	COURSE_REMMEND(24,"/api/getrecommand"),
 
 	SEND_EMAIL_CODE(12,"/api/info/emailcode"),
 	UPDATE_PASS(13,"/api/info/updatepass"),
